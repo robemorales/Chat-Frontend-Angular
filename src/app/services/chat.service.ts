@@ -3,14 +3,15 @@ import * as signalR from '@microsoft/signalr';
 import { HttpClient } from '@angular/common/http';
 import { MessageDTO } from '../DTO/MessageDTO';
 import { Observable, Subject } from 'rxjs';
+import { environment } from './../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private connection: any = new signalR.HubConnectionBuilder().withUrl("https://localhost:44379/chatsocket")
+  private connection: any = new signalR.HubConnectionBuilder().withUrl(environment.hubConnectionURL)
   .configureLogging(signalR.LogLevel.Information).build();
-  readonly POST_URL = "https://localhost:44379/api/chat/send"
+  readonly POST_URL = environment.broadcastURL;
 
   private receivedMessageObject: MessageDTO = new MessageDTO();
 
@@ -20,7 +21,7 @@ export class ChatService {
       await this.start();
 
     });
-    this.connection.on("ReceiveOne", (user: any, message: any) => { this.mapReceivedMessage(user, message); });
+    this.connection.on("ReciveOne", (user: string, message: string) => { this.mapReceivedMessage(user, message); });
     this.start();
   }
 
@@ -28,7 +29,7 @@ export class ChatService {
 
     try {
       await this.connection.start();
-      console.log("connected");
+      console.log("connected super connected");
 
     } catch (err) {
       console.log(err)
