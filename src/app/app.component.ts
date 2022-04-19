@@ -5,7 +5,7 @@ import { MessageDTO } from 'src/app/DTO/MessageDTO';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'wep-chat-app';
@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
         window.alert("Both fields are required.");
         return;
       } else {
-        this.chatService.broadcastMessage(this.msgDto);                   // Send the message via a service
+        this.chatService.broadcastMessage(this.msgDto);
+        this.msgDto.msgText = '';
       }
     }
   }
