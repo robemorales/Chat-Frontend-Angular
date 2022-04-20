@@ -1,9 +1,18 @@
+import {default as data} from '../../auth-config.json';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth:{
+    domain: data.domain,
+    clientId: data.clientId,
+    redirectUri: window.location.origin,
+
+  },
+  hubConnectionURL: 'https://localhost:7107/chatsocket',
+  broadcastURL: 'https://localhost:7107/api/chat/send'
 };
 
 /*
