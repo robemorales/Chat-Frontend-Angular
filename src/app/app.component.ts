@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { MessageDTO } from 'src/app/DTO/MessageDTO';
-
+import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +9,7 @@ import { MessageDTO } from 'src/app/DTO/MessageDTO';
 })
 export class AppComponent implements OnInit {
   title = 'wep-chat-app';
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, public auth: AuthService) {}
 
   ngOnInit(): void {
     this.chatService.retrieveMappedObject().subscribe( (receivedObj: MessageDTO) => { this.addToInbox(receivedObj);});  // calls the service method to get the new messages sent
