@@ -3,20 +3,21 @@
   margin: 0;
   padding: 0;
 }
+
+
 .text-auth{
   text-align: center;
   padding-top: 15rem;
-  color: #191D32;
+
 
 }
 
 
-.text-center {
-  text-align: center;
-}
+
 
 h2 {
   margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .msg-italic-style {
@@ -34,16 +35,17 @@ h2 {
   right: 0;
   width: 100%;
 
-  background-color: rgb(25, 29, 50);
+  background-color: #fdfdfd; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, #ffffff , rgb(8, 0, 12));
   height: 8vh;
 
-  display: flex;
+  /*display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
 
-  h2 {
-      color: #FDFFFF;
+  img{
+    margin-right: 70rem;
   }
 }
 
@@ -62,7 +64,7 @@ h2 {
       width: 100%;
       height: calc(100% - 140px);
       margin-top: 20px;
-      border: 2px solid #191D32;
+      border: 1px solid #303135;
       border-radius: .5em;
       padding: 10px 30px;
       font-size: 14px;
@@ -105,7 +107,7 @@ h2 {
           border: 0px solid rgba(0, 0, 0, 0);
           padding: 10px;
           flex: 1 1 0;
-          border: 1.5px solid #DD1155;
+          border: 1.5px solid #1b1718;
       }
 
       .msg-input:focus {
@@ -118,7 +120,7 @@ h2 {
           height: 100%;
           width: 100px;
           border-radius: .3em;
-          background-color: #DD1155;
+          background-color: #11dd3d;
           margin-left: 20px;
           border: 0px solid rgba(0, 0, 0, 0);
           font-size: 25px;
