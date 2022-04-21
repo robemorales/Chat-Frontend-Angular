@@ -1,9 +1,5 @@
-.button-login{
-  margin-bottom: 2rem;
-  margin-right: 2rem;
-  border-radius: 4%;
-
-  position: fixed; right: 0;
-  background-color: aliceblue;
-
+.login-button{
+  margin-left: 1.75rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
