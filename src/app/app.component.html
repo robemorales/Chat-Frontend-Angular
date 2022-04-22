@@ -1,47 +1,51 @@
+<ng-template #loaded>
+  <router-outlet></router-outlet>
+</ng-template>
+<div class="col-sm-12">
 
+  <div class="chat" *ngIf="(auth.isAuthenticated$ | async)==true">
+    <app-navbar></app-navbar>
+    <div class="profile-icon">
+      <a href="https://udith.netlify.app" target="_blank"><i class="fa fa-grav" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="body-footer">
+
+      <div class="ud-body">
+        <div class="msg-box">
+          <ul>
+            <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-msg' : 'ex-msg'">{{mObj.user}} :<br /><span class="msg-italic-style">{{mObj.msgText}}</span></li>
+          </ul>
+        </div>
+        <div class="ud-flex-row" >
+          <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.msgText"  />
+          <button class="send-btn" (click)= "send()"><i class="fas fa-paper-plane"></i>Send</button>
+        </div>
+        <input *ngIf="auth.user$ | async as user" type="text" class="name-box" [(ngModel)]="msgDto.user" value="{{user.name}}" />
+        <!--<input type="text" class="name-box" *ngIf="auth.user$ | async as user"  value="{{user.name}}" />-->
+      </div>
+
+    </div>
+
+  </div>
+  <div *ngIf="(auth.isAuthenticated$ | async)==false">
+    <app-login-main></app-login-main>
+
+  </div>
+</div>
 <!--<div class="ud-header">
   <img src="https://static.vecteezy.com/system/resources/thumbnails/002/135/986/small/chat-wing-logo-design-illustration-free-vector.jpg" width="50" height="50" alt="">
   <h2 class="text-center">Public Chat</h2>
   <div  *ngIf="auth.isLoading$ | async; else loaded">
     <p>Cargando...</p>
   </div>
-</div>-->
-<ng-template #loaded>
-  <router-outlet></router-outlet>
+</div>
 
-</ng-template>
 
-   <div class="col-sm-12">
 
-      <div class="chat" *ngIf="(auth.isAuthenticated$ | async)==true">
-        <app-navbar></app-navbar>
-        <div class="profile-icon">
-          <a href="https://udith.netlify.app" target="_blank"><i class="fa fa-grav" aria-hidden="true"></i></a>
-        </div>
 
-        <div class="body-footer">
+-->
 
-          <div class="ud-body">
-            <div class="msg-box">
-              <ul>
-                <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-msg' : 'ex-msg'">{{mObj.user}} :<br /><span class="msg-italic-style">{{mObj.msgText}}</span></li>
-              </ul>
-            </div>
-            <div class="ud-flex-row">
-              <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.msgText"  />
-              <button class="send-btn" (click)= "send()"><i class="fas fa-paper-plane"></i>Send</button>
-            </div>
-            <input type="text" placeholder="Your name" class="name-box" [(ngModel)]="msgDto.user"/>
-          </div>
-
-        </div>
-
-      </div>
-      <div *ngIf="(auth.isAuthenticated$ | async)==false">
-        <app-login-main></app-login-main>
-
-      </div>
-    </div>
 
 
 

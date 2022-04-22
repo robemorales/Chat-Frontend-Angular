@@ -1,8 +1,82 @@
-<button (click)="loadUser()"  class="rounded-pill logo-avatar">
-  <img src="https://thumbs.dreamstime.com/b/vector-icon-user-avatar-web-site-mobile-app-man-face-flat-style-social-network-profile-45836554.jpg" style="width:50px;"  class="rounded-pill"  alt="AvatarLogo" />
-</button>
+
+<div class="dropdown dropstart">
+  <button  data-bs-toggle="dropdown"  class="rounded-pill btn btn-basic dropdown-toggle logo-avatar">
+    <img src="https://thumbs.dreamstime.com/b/vector-icon-user-avatar-web-site-mobile-app-man-face-flat-style-social-network-profile-45836554.jpg" style="width:50px;"  class="rounded-pill"  alt="AvatarLogo" />
+  </button>
+
+  <ul class="dropdown-menu" id="drop-button">
+    <li><app-logout-button></app-logout-button></li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <button class="btn btn=basic" (click)="loadUser()" data-bs-toggle="modal" data-bs-target="#myModal">
+        Profile
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+<div class="modal" id="myModal" *ngIf="auth.user$ | async as user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><img src="https://thumbs.dreamstime.com/b/vector-icon-user-avatar-web-site-mobile-app-man-face-flat-style-social-network-profile-45836554.jpg" alt="" style="width:80px;"  class="rounded-pill"> Your Profile</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="card" style="width:450px">
+
+          <div class="card-body ">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr>
+                  <th>Nickname</th>
+                  <th>Verified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{user.nickname}}</td>
+                  <td>{{user.email_verified}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 <!--<ul *ngIf="auth.user$ | async as user">
-  <pre>{{profileJson}}</pre>
+
   <li>{{ user.name }}</li>
   <li>{{ user.email }}</li>
 </ul>-->

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,7 +23,11 @@ export class ProfileComponent implements OnInit {
     });
   }
   loadUser(){
-    alert(this.profileJson)
+    /*this.auth.user$.subscribe((profile)=>{
+      alert(JSON.stringify(profile,['name']))
+
+    })*/
+
   }
 
 }
