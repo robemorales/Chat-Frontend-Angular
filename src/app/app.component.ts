@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     this.auth.user$.subscribe((profile)=>{
       this.name = JSON.stringify(profile,['name'])
 
-    })
+    });
 
     let newObj = new MessageDTO();
     newObj.user = this.name;

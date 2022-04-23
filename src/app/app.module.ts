@@ -15,6 +15,8 @@ import { AuthenticationButtonComponent } from './components/authentication-butto
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginMainComponent } from './screen/login-main/login-main.component';
 import { NavbarComponent } from './screen/navbar/navbar.component';
+import { EmailComponent } from './screen/email/email.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { NavbarComponent } from './screen/navbar/navbar.component';
     AuthenticationButtonComponent,
     ProfileComponent,
     LoginMainComponent,
-    NavbarComponent
+    NavbarComponent,
+    EmailComponent,
+
   ],
   imports: [
     BrowserModule,

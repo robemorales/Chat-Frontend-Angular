@@ -1,7 +1,7 @@
-<ng-template #loaded>
+<div class="col-sm-12">
+  <ng-template #loaded>
   <router-outlet></router-outlet>
 </ng-template>
-<div class="col-sm-12">
 
   <div class="chat" *ngIf="(auth.isAuthenticated$ | async)==true">
     <app-navbar></app-navbar>
@@ -33,6 +33,8 @@
 
   </div>
 </div>
+
+
 <!--<div class="ud-header">
   <img src="https://static.vecteezy.com/system/resources/thumbnails/002/135/986/small/chat-wing-logo-design-illustration-free-vector.jpg" width="50" height="50" alt="">
   <h2 class="text-center">Public Chat</h2>

@@ -13,8 +13,8 @@ export class ProfileComponent implements OnInit {
 
   public profileJson: string = "";
   constructor(public auth: AuthService) {
-
   }
+
 
   ngOnInit(): void {
     this.auth.user$
@@ -22,12 +22,6 @@ export class ProfileComponent implements OnInit {
       this.profileJson = JSON.stringify(profile, null, 2)
     });
   }
-  loadUser(){
-    /*this.auth.user$.subscribe((profile)=>{
-      alert(JSON.stringify(profile,['name']))
 
-    })*/
-
-  }
 
 }

@@ -8,8 +8,14 @@
     <li><app-logout-button></app-logout-button></li>
     <li><hr class="dropdown-divider"></li>
     <li>
-      <button class="btn btn=basic" (click)="loadUser()" data-bs-toggle="modal" data-bs-target="#myModal">
+      <button class="btn btn=basic" data-bs-toggle="modal" data-bs-target="#myModal">
         Profile
+      </button>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <button class="btn btn=basic" data-bs-toggle="modal" data-bs-target="#email-Modal">
+        Send email
       </button>
     </li>
   </ul>
@@ -17,10 +23,7 @@
 
 
 
-
-
-
-
+<!--Show Profile-->
 <div class="modal" id="myModal" *ngIf="auth.user$ | async as user">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,10 +78,82 @@
     </div>
   </div>
 </div>
-<!--<ul *ngIf="auth.user$ | async as user">
+<!--End show profile-->
+<!--Send email-->
+<!-- The Modal -->
+<div class="modal" id="email-Modal">
+  <div class="modal-dialog modal-fullscreen-lg-down">
+    <div class="modal-content">
 
-  <li>{{ user.name }}</li>
-  <li>{{ user.email }}</li>
-</ul>-->
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title-email"><img class="modal-email" src="https://rtdigitalmediamarketing.com/wp-content/uploads/2017/03/emil-banner.jpg" style="width: 29rem;" alt=""></h4>
+
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class=" container">
+          <form action="https://formspree.io/f/xpzboabr" method="post">
+            <div class="mb-3 mt-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <label for="comment">Text:</label>
+            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+            <br>
+            <button id="my-form-button" type="submit" class="btn btn-primary">Submit</button>
+            <p id="my-form-status"></p>
+          </form>
+          <script>
+            var form = document.getElementById("my-form");
+
+            async function handleSubmit(event) {
+              event.preventDefault();
+              var status = document.getElementById("my-form-status");
+              var data = new FormData(event.target);
+              fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+              }).then(response => {
+                if (response.ok) {
+                  status.innerHTML = "Thanks for your submission!";
+                  form.reset()
+                } else {
+                  response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                    } else {
+                      status.innerHTML = "Oops! There was a problem submitting your form"
+                    }
+                  })
+                }
+              }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+              });
+            }
+            form.addEventListener("submit", handleSubmit)
+        </script>
+
+
+
+        </div>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--end sen email-->
 
 
