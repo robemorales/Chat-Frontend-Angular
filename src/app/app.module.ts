@@ -12,6 +12,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { AuthenticationButtonComponent } from './components/authentication-button/authentication-button.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginMainComponent } from './screen/login-main/login-main.component';
+import { NavbarComponent } from './screen/navbar/navbar.component';
+import { FooterComponent } from './screen/footer/footer.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -19,7 +26,13 @@ import { AuthenticationButtonComponent } from './components/authentication-butto
     HomeComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    AuthenticationButtonComponent
+    AuthenticationButtonComponent,
+    ProfileComponent,
+    LoginMainComponent,
+    NavbarComponent,
+    FooterComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -31,7 +44,8 @@ import { AuthenticationButtonComponent } from './components/authentication-butto
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,LoginMainComponent]
+
 })
 export class AppModule { }
 

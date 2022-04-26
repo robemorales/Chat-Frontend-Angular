@@ -1,0 +1,129 @@
+
+<div class="dropdown dropstart">
+  <button  data-bs-toggle="dropdown"  class="rounded-pill btn btn-basic dropdown-toggle logo-avatar">
+    <img src="https://thumbs.dreamstime.com/b/vector-icon-user-avatar-web-site-mobile-app-man-face-flat-style-social-network-profile-45836554.jpg" style="width:50px;"  class="rounded-pill"  alt="AvatarLogo" />
+  </button>
+
+  <ul class="dropdown-menu" id="drop-button">
+    <li><app-logout-button></app-logout-button></li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <button class="btn btn=basic" data-bs-toggle="modal" data-bs-target="#myModal">
+        Profile
+      </button>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <button class="btn btn=basic" data-bs-toggle="modal" data-bs-target="#email-Modal">
+        Send email
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+
+<!--Show Profile-->
+<div class="modal" id="myModal" *ngIf="auth.user$ | async as user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><img src="https://thumbs.dreamstime.com/b/vector-icon-user-avatar-web-site-mobile-app-man-face-flat-style-social-network-profile-45836554.jpg" alt="" style="width:80px;"  class="rounded-pill"> Your Profile</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="card" style="width:450px">
+
+          <div class="card-body ">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr>
+                  <th>Nickname</th>
+                  <th>Verified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{user.nickname}}</td>
+                  <td>{{user.email_verified}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--End show profile-->
+<!--Send email-->
+<!-- The Modal -->
+<div class="modal" id="email-Modal">
+  <div class="modal-dialog modal-fullscreen-lg-down">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title-email"><img class="modal-email" src="https://rtdigitalmediamarketing.com/wp-content/uploads/2017/03/emil-banner.jpg" style="width: 29rem;" alt=""></h4>
+
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class=" container">
+          <div class="email-form">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" id="email-form">
+              <input class="email form-control" type="text" placeholder="Email" email name="email" ngModel required #email="ngModel"><br>
+              <input class="subject form-control" type="text" placeholder="Subject" name="subject" ngModel required #name="ngModel"><br>
+              <textarea class="message form-control" placeholder="Messages" name="messages" ngModel required #messages="ngModel"></textarea><br>
+              <input class="btn btn-primary" type="submit" value="Send">
+            </form>
+            <script>
+              document.addEventListener('DOMContentLoaded', function(){
+                let formulario = document.getElementById('email-form');
+                formulario.addEventListener('submit', function() {
+                  formulario.reset();
+                });
+              });
+            </script>
+        </div>
+        </div>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--end sen email-->
+
+
