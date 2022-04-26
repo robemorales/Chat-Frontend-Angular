@@ -1,1 +1,27 @@
+.card-body {
+  display: inline;
+}
+.name-nickname{
+  margin-left: 5rem;
+}
 
+.table{
+  align-self: center;
+}
+thead{
+  color: rgb(78, 78, 78);
+}
+.dropdown-toggle::after {
+  content: none;
+}
+#drop-button{
+  margin-top: 4.5rem;
+
+}
+.modal-email{
+  border-radius: 7px;
+}
+.email-form{
+  padding: 20px;
+
+}

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { MessageDTO } from 'src/app/DTO/MessageDTO';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +11,7 @@ import { AuthService } from '@auth0/auth0-angular';
 export class AppComponent implements OnInit {
   title = 'wep-chat-app';
   constructor(private chatService: ChatService, public auth: AuthService) {}
-
+  public name: string = "";
   ngOnInit(): void {
     this.chatService.retrieveMappedObject().subscribe( (receivedObj: MessageDTO) => { this.addToInbox(receivedObj);});  // calls the service method to get the new messages sent
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
 
   send(): void {
     if(this.msgDto) {
-      if(this.msgDto.user.length == 0 || this.msgDto.user.length == 0){
+      if(this.msgDto.msgText.length == 0 ){
         window.alert("Both fields are required.");
         return;
       } else {
@@ -30,10 +31,20 @@ export class AppComponent implements OnInit {
       }
     }
   }
+  loadUser(){
+
+  }
 
   addToInbox(obj: MessageDTO) {
+
+    this.auth.user$.subscribe((profile)=>{
+      this.name = JSON.stringify(profile,['name'])
+
+    });
+
     let newObj = new MessageDTO();
-    newObj.user = obj.user;
+    newObj.user = this.name;
+    /*newObj.user = obj.user;*/
     newObj.msgText = obj.msgText;
     this.msgInboxArray.push(newObj);
 
