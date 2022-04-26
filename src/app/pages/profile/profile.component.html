@@ -94,52 +94,22 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class=" container">
-          <form action="https://formspree.io/f/xpzboabr" method="post">
-            <div class="mb-3 mt-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-            </div>
-            <label for="comment">Text:</label>
-            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-            <br>
-            <button id="my-form-button" type="submit" class="btn btn-primary">Submit</button>
-            <p id="my-form-status"></p>
-          </form>
-          <script>
-            var form = document.getElementById("my-form");
-
-            async function handleSubmit(event) {
-              event.preventDefault();
-              var status = document.getElementById("my-form-status");
-              var data = new FormData(event.target);
-              fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-              }).then(response => {
-                if (response.ok) {
-                  status.innerHTML = "Thanks for your submission!";
-                  form.reset()
-                } else {
-                  response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                      status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                    } else {
-                      status.innerHTML = "Oops! There was a problem submitting your form"
-                    }
-                  })
-                }
-              }).catch(error => {
-                status.innerHTML = "Oops! There was a problem submitting your form"
+          <div class="email-form">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" id="email-form">
+              <input class="email form-control" type="text" placeholder="Email" email name="email" ngModel required #email="ngModel"><br>
+              <input class="subject form-control" type="text" placeholder="Subject" name="subject" ngModel required #name="ngModel"><br>
+              <textarea class="message form-control" placeholder="Messages" name="messages" ngModel required #messages="ngModel"></textarea><br>
+              <input class="btn btn-primary" type="submit" value="Send">
+            </form>
+            <script>
+              document.addEventListener('DOMContentLoaded', function(){
+                let formulario = document.getElementById('email-form');
+                formulario.addEventListener('submit', function() {
+                  formulario.reset();
+                });
               });
-            }
-            form.addEventListener("submit", handleSubmit)
-        </script>
-
-
-
+            </script>
+        </div>
         </div>
 
 

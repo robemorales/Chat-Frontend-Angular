@@ -15,7 +15,9 @@ import { AuthenticationButtonComponent } from './components/authentication-butto
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginMainComponent } from './screen/login-main/login-main.component';
 import { NavbarComponent } from './screen/navbar/navbar.component';
-import { EmailComponent } from './screen/email/email.component';
+import { FooterComponent } from './screen/footer/footer.component';
+
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { EmailComponent } from './screen/email/email.component';
     ProfileComponent,
     LoginMainComponent,
     NavbarComponent,
-    EmailComponent,
+    FooterComponent,
+
 
   ],
   imports: [
