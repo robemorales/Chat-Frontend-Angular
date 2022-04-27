@@ -39,9 +39,9 @@ import { FooterComponent } from './screen/footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AuthModule.forRoot({
+    /*AuthModule.forRoot({
       ...env.auth,
-    }),
+    }),*/
   ],
   providers: [],
   bootstrap: [AppComponent,LoginMainComponent]

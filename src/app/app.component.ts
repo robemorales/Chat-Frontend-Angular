@@ -37,14 +37,9 @@ export class AppComponent implements OnInit {
 
   addToInbox(obj: MessageDTO) {
 
-    this.auth.user$.subscribe((profile)=>{
-      this.name = JSON.stringify(profile,['name'])
-
-    });
 
     let newObj = new MessageDTO();
-    newObj.user = this.name;
-    /*newObj.user = obj.user;*/
+    newObj.user = obj.user;
     newObj.msgText = obj.msgText;
     this.msgInboxArray.push(newObj);
 

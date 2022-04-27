@@ -11,8 +11,8 @@ export const environment = {
     redirectUri: window.location.origin,
 
   },
-  hubConnectionURL: 'https://localhost:7107/chatsocket',
-  broadcastURL: 'https://localhost:7107/api/chat/send'
+  hubConnectionURL: 'https://api-chat-signalr.herokuapp.com/chatsocket',
+  broadcastURL: 'https://api-chat-signalr.herokuapp.com/api/chat/send'
 };
 
 /*

@@ -6,7 +6,14 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "ng build --prod"
+
+
+  },
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.3"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +29,9 @@
     "@microsoft/signalr": "^6.0.4",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.1.3",
+    "express": "^4.18.0",
     "jquery": "^3.6.0",
+    "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
